@@ -19,10 +19,11 @@ This is the xml element attribute. Attributes have one of the type specified in 
 
 |Type|Description|Default value|
 |----|-----------|-----|
-|namespace|a namespace string|http://www.webkool.net/1.0/|
-|identifier|||
-
-*[SB : Should provided description for every property]*
+|filename|a string representing a valid filename|*none*|
+|identifier|an ECMAScript identifier|*none*|
+|mime-type|a string|text/html|
+|namespace|a string|http://www.webkool.net/1.0/|
+|url|a unique resource locator|*none*|
 
 **Elements**
 
@@ -84,11 +85,11 @@ handler
 
 **Attributes**
 
-`url`: *uri*, *required*, should be unique to avoid conflict. 
+`url`: *url*, *required*, should be unique to avoid conflict. 
 
 `type`: *mime-type*, *optional*, used by the http server to specified the response. the default value is text/html.
 
-`Constructor`: the name of an existing constructor, *optional*, Handler by default.
+`Constructor`: *identifier*, *optional*, identifier of an existing constructor, the default value is Handler.
 
 **Elements**
 
@@ -196,7 +197,7 @@ stylesheet
 
 `href`: *filename*, *optional*, an existing stylesheet filename. The path should be relative to current document path, or to the ‘include’ path that are specified in the wkc tool parameters..
 
-`system`: *preprocessor*, *optional*, processor name to execute on the file, currently only **lessc** and **sass** are implemented.  
+`system`: * identifier*, *optional*, processor name to execute on the file, currently only **lessc** and **sass** are implemented.  
 
 **CDATA**
 
@@ -220,11 +221,11 @@ template
 
 **Attributes**
 
-`id`: *name*, *optional*, the unique template identifier.
+`id`: *identifier*, *optional*, the unique template identifier.
 
 `href`: *filename*, *optional*, an existing template filename. The path should be relative to current document path, or to the ‘include’ path that are specified in the wkc tool parameters.
 
-`system`: *preprocessor*, *optional*, processor name to execute on the file, currently **page** and **mustache** are implemented.
+`system`: *identifier*, *optional*, processor name to execute on the file, currently **page** and **mustache** are implemented.
 
 **CDATA**
 
