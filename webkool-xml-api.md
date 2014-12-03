@@ -3,30 +3,37 @@
 ##### December 1st, 2014
 
 1. **About this document**
+
 This document provides details on the elements that make up the XML api of webkool. 
 
 2. **XML api reference**
+
 This section provides details on the elements that make up the webkool XML API. For each element, a brief description is provided. (For elements described as defining constructors or templates that create or instantiate objects, more information about the objects can be found in the webkool javascript api reference document.) Then the following information is presented if relevant: 
 
-> **Tags**
+**Tags**
+
 This is the xml element tag. The namespace is always the default webkool namespace.
 
-> **Attributes**
+**Attributes**
+
 This is the xml element attribute. Attributes have one of the type specified in the following table. Attributes that are required are indicated as such in this section. Unless noted otherwise, the default values for optional attributes are as shown in the table.
 
-> |Type|Description|Default value|
-> |----|-----------|-----|
-> |namespace|a namespace string|http://www.webkool.net/1.0/|
-> |identifier|||
+|Type|Description|Default value|
+|----|-----------|-----|
+|namespace|a namespace string|http://www.webkool.net/1.0/|
+|identifier|||
 
 *[SB : Should provided description for every property]*
 
-> **Elements**
+**Elements**
+
 The XML elements within this element.
 
-> **CDATA**
+**CDATA**
+
 The characters within this element. Several elements hold javascript code, stylesheet or HTML, which is usually escaped like this: 
-<![CDATA[ 
+
+<![CDATA[
 // javascript code, stylesheet or HTML 
 ]]> 
 
