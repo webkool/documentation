@@ -51,7 +51,7 @@ application
 
 **Attributes**
 
-xmlns: *namespace* - *required*, always http://www.webkool.net/1.0/
+`xmlns`: *namespace* - *required*, always ‘http://www.webkool.net/1.0/'
 
 **Elements**
 
@@ -85,9 +85,11 @@ handler
 
 **Attributes**
 
-url: *uri*, *required*, should be unique to avoid conflict. 
-type: *mime-type*, *optional*, used by the http server to specified the response. the default value is text/html.
-Constructor: the name of an existing constructor, *optional*, Handler by default.
+`url`: *uri*, *required*, should be unique to avoid conflict. 
+
+`type`: *mime-type*, *optional*, used by the http server to specified the response. the default value is text/html.
+
+`Constructor`: the name of an existing constructor, *optional*, Handler by default.
 
 **Elements**
 
@@ -113,6 +115,7 @@ The on Element add the event id to its handler behavior. The main event id are �
 * ‘request’ is called when a handler is requested.
 * ‘complete’ when all the sub request are done.
 * ‘error’ when an error occurred during the sub request.
+
 > There is an special event named ‘render’ that is called when the handler is a root handler (first call handler) to layout the result.
 
 **Tags**
@@ -121,7 +124,7 @@ on
 
 **Attributes**
 
-id *event*, *required*, should be unique for a specific handler.
+`id`: *identifier*, *required*, should be unique for a specific handler.
 
 **CDATA**
 
@@ -140,8 +143,9 @@ server
 
 **Elements**
 
-handler, include, on, property, script, stylesheet, template.
-The on element is accepted only if the client element is used inside a handler element.
+handler, include, on[1], property, script, stylesheet, template.
+
+[1] The ‘on’ element is accepted only if the client element is used inside a handler element.
 
 
 
@@ -155,7 +159,7 @@ property
 
 **Attributes**
 
-id: *name*, *required*, the property name to store the value.  
+`id`: *identifier*, *required*, the property name to store the value.  
 
 **CDATA**
 
@@ -173,7 +177,7 @@ script
 
 **Attributes**
 
-href: *filename*, *optional*, an existing javascript filename. The path should be relative to current document path, or to the ‘include’ path that are specified in the wkc tool parameters..
+`href`: *filename*, *optional*, an existing javascript filename. The path should be relative to current document path, or to the ‘include’ path that are specified in the wkc tool parameters..
 
 **CDATA**
 
@@ -191,8 +195,9 @@ stylesheet
 
 **Attributes**
 
-href: *filename*, *optional*, an existing stylesheet filename. The path should be relative to current document path, or to the ‘include’ path that are specified in the wkc tool parameters..
-system: *preprocessor*, *optional*, processor name to execute on the file, currently only **lessc** and **sass** are implemented.  
+`href`: *filename*, *optional*, an existing stylesheet filename. The path should be relative to current document path, or to the ‘include’ path that are specified in the wkc tool parameters..
+
+`system`: *preprocessor*, *optional*, processor name to execute on the file, currently only **lessc** and **sass** are implemented.  
 
 **CDATA**
 
@@ -204,9 +209,10 @@ The stylesheet’s body, one of styleheet’s body or href are required, but not
 
 This element is used to define rendering template. The element could be inside a handler element or at the global level inside an application element. A template inside the application element should have a unique id.
 
-When included in the handler element, template automatically implement the `render` event to layout the content.
+When included in the handler element, template automatically implement the ‘render’ event to layout the content.
 
-Optionally template’s data can be preprocess, the local environment accessible the template language is `scope`. 
+Optionally template’s data can be preprocess, the local environment accessible the template language is ‘scope’. 
+
 [SB : Should talk about with(scope)]
 
 **Tags**
@@ -215,9 +221,11 @@ template
 
 **Attributes**
 
-id: *name*, *optional*, the unique template identifier.
-href: *filename*, *optional*, an existing template filename. The path should be relative to current document path, or to the ‘include’ path that are specified in the wkc tool parameters.
-system: *preprocessor*, *optional*, processor name to execute on the file, currently **page** and **mustache** are implemented.
+`id`: *name*, *optional*, the unique template identifier.
+
+`href`: *filename*, *optional*, an existing template filename. The path should be relative to current document path, or to the ‘include’ path that are specified in the wkc tool parameters.
+
+`system`: *preprocessor*, *optional*, processor name to execute on the file, currently **page** and **mustache** are implemented.
 
 **CDATA**
 
