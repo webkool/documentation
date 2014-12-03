@@ -1,6 +1,5 @@
 # Webkool 1.0 - XML api reference
-*Draft version 0.1*
-*December 1st, 2014*
+*Draft version 0.1*, *December 1st, 2014*
 
 ## **1. About this document**
 
@@ -8,7 +7,7 @@ This document provides details on the elements that make up the XML api of webko
 
 ## **2. XML api reference**
 
-This section provides details on the elements that make up the webkool XML API. For each element, a brief description is provided. (For elements described as defining constructors or templates that create or instantiate objects, more information about the objects can be found in the webkool javascript api reference document.) Then the following information is presented if relevant: 
+This section provides details on the elements that make up the webkool XML API. For each element, a brief description is provided. (For elements described as defining constructors or templates that create or instantiate objects, more information about the objects can be found in the webkool ECMAScript api reference document.) Then the following information is presented if relevant: 
 
 **Tags**
 
@@ -31,11 +30,11 @@ The XML elements within this element.
 
 **CDATA**
 
-The characters within this element. Several elements hold javascript code, stylesheet or HTML, which is usually escaped like this: 
+The characters within this element. Several elements hold ECMAScript code, stylesheet or HTML, which is usually escaped like this: 
 
 <![CDATA[
 
-// javascript code, stylesheet or HTML 
+// ECMAScript code, stylesheet or HTML 
 
 ]]> 
 
@@ -106,7 +105,7 @@ include
 
 **Attributes**
 
-href: *filename*, *optional*, an existing webkool filename. The path should be relative to current document path, or to the ‘include’ path that are specified in the wkc tool parameters..
+`href`: *filename*, *optional*, an existing webkool filename. The path should be relative to current document path, or to the ‘include’ path that are specified in the wkc tool parameters..
 
 
 ### **2.5 On  Element**
@@ -128,7 +127,7 @@ on
 
 **CDATA**
 
-Javascript code, the body of the event. The local environment implicitly accessible inside an event are *handler*, *model* and *query* for all event except ‘render’ event. 
+ECMAscript code, the body of the event. The local environment implicitly accessible inside an event are *handler*, *model* and *query* for all event except ‘render’ event. 
 The local environment of the ‘render’ event are handler and scope (which is a short cut to handler.result).  
 
 
@@ -169,7 +168,7 @@ the value to store, it’s store inside application.properties[id].
 
 ### **2.8 Script  Element**
 
-This element is used to include inline or external javascript script. The script are include in the declaration order.  
+This element is used to include inline or external ECMAScript file. The script content are include in the declaration order.  
 
 **Tags**
 
@@ -177,11 +176,11 @@ script
 
 **Attributes**
 
-`href`: *filename*, *optional*, an existing javascript filename. The path should be relative to current document path, or to the ‘include’ path that are specified in the wkc tool parameters..
+`href`: *filename*, *optional*, an existing ECMAScript filename. The path should be relative to current document path, or to the ‘include’ path that are specified in the wkc tool parameters..
 
 **CDATA**
 
-The script’s body, one of script body or href are required, but not both at the same time.
+The ECMAScript’s body, one of script body or href are required, but not both at the same time.
 
 
 
