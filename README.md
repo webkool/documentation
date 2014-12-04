@@ -2,7 +2,7 @@
 
 documentation for the open-source library webkool.
 
-[/webkool-xml-api.md](Webkool XML api reference)
+[webkool XML api reference](webkool-xml-api.md)
 
 ## History
 
