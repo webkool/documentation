@@ -1,8 +1,10 @@
-# webkool documentation
+# webkool 1.0 documentation
 
-documentation for the open-source library webkool.
+Documentation for the open-source library webkool.
 
-[webkool XML api reference](webkool-xml-api.md)
+[Webkool 1.0 XML api reference](webkool-xml-api.md)
+
+[Webkool 1.0 XML ECMAScript reference](webkool-ecma-api.md)
 
 ## History
 
