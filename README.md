@@ -2,6 +2,8 @@
 
 documentation for the open-source library webkool.
 
+[/webkool-xml-api.md](Webkool XML api reference)
+
 ## History
 
 **0.1**:
