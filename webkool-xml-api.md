@@ -1,5 +1,5 @@
 # Webkool 1.0 - XML api reference
-*Draft version 0.1*, *December 1st, 2014*
+*Draft version 0.2*, *December 4th, 2014*
 
 ## **1. About this document**
 
@@ -61,7 +61,7 @@ client, handler, include, property, server, script, stylesheet, template.
 
 ### **2.2 Client Element**
 
-This element is used to specify to the wkc compiler that we are at the client side. Then the element’s child are included only if the file is compiled with the client flag set to true.
+The elements within this element are for the client side, that mean that their are compiled by wkc only if the client flag is set to true.
 
 **Tags**
 
@@ -77,7 +77,13 @@ handler, include, on[1], property, script, stylesheet, template.
 
 ### **2.3 Handler Element**
 
-This element is the main tag in the webkool xml api. It declare a handler that will respond to a request depending on its behavior.
+This is the main element in the webkool xml api. It declare a handler that will respond to a request depending on its behavior. 
+
+> Handler url act as route.
+> to request a handler, you can call application.request(url, query) from anywhere or handler.request(url, query) from a handler event. 
+> the webkool application find the Handler Constructor under that url, instantiate the constructor and the associated behavior. 
+> handler.request(url, query) return a promise that will be ready when the ‘complete’ event is called.
+> In the ‘complete’ event the handler can redirect layout to an other handler by calling handler.redirect(url, query).
 
 **Tags**
 
@@ -106,7 +112,7 @@ include
 
 **Attributes**
 
-`href`: *filename*, *optional*, an existing webkool filename. The path should be relative to current document path, or to the ‘include’ path that are specified in the wkc tool parameters..
+`href`: *filename*, *optional*, an existing webkool filename. The path should be relative to current document path, or to the ‘include’ path that are specified in the wkc tool parameters.
 
 
 ### **2.5 On  Element**
@@ -116,7 +122,9 @@ The on Element add the event id to its handler behavior. The main event id are �
 * ‘complete’ when all the sub request are done.
 * ‘error’ when an error occurred during the sub request.
 
-> There is an special event named ‘render’ that is called when the handler is a root handler (first call handler) to layout the result.
+> There is an special event named ‘render’ that is called when the handler is a root handler (handler called by an HTTP request at the server side or handler called by application.render at the client side) to layout the result. 
+> * At the server side the layout is return via the HTTP response with the specified mime type in the content-type Header. If the mime type is ‘application/json’ the layout is convert to json, else is convert to string.
+> * At the client side the layout is set in the document body innerHTML. 
 
 **Tags**
 
@@ -135,7 +143,7 @@ The local environment of the ‘render’ event are handler and scope (which is 
 
 ### **2.6 Server  Element**
 
-The element’s child are included only if the file is compiled with the server flag set to true.
+The elements within this element are for the server side, that mean that their are compiled by wkc only if the server flag is set to true.
 
 **Tags**
 
@@ -177,17 +185,17 @@ script
 
 **Attributes**
 
-`href`: *filename*, *optional*, an existing ECMAScript filename. The path should be relative to current document path, or to the ‘include’ path that are specified in the wkc tool parameters..
+`href`: *filename*, *optional*, an existing ECMAScript filename. The path should be relative to current document path, or to the ‘include’ path that are specified in the wkc tool parameters.
 
 **CDATA**
 
-The ECMAScript’s body, one of script body or href are required, but not both at the same time.
+The ECMAScript’s body, one of script body or href are required, but both are not allowed.
 
 
 
 ### **2.9 Stylesheet  Element**
 
-This element is used to include inline or external stylesheet. The stylesheet are include in the declaration order.  
+This element is used to include inline or external stylesheet file. The stylesheet are include in the declaration order.  
 
 **Tags**
 
@@ -195,25 +203,23 @@ stylesheet
 
 **Attributes**
 
-`href`: *filename*, *optional*, an existing stylesheet filename. The path should be relative to current document path, or to the ‘include’ path that are specified in the wkc tool parameters..
+`href`: *filename*, *optional*, an existing stylesheet filename. The path should be relative to current document path, or to the ‘include’ path that are specified in the wkc tool parameters.
 
-`system`: * identifier*, *optional*, processor name to execute on the file, currently only **lessc** and **sass** are implemented.  
+`system`: * identifier*, *optional*, processor name to execute on the file, currently **lessc** and **sass** are implemented.  
 
 **CDATA**
 
-The stylesheet’s body, one of styleheet’s body or href are required, but not both at the same time.
+The stylesheet’s body, one of styleheet body or href are required, but both are not allowed.
+.
 
 
 
 ### **2.10 Template Element**
 
-This element is used to define rendering template. The element could be inside a handler element or at the global level inside an application element. A template inside the application element should have a unique id.
+This element is used to define rendering template. The element could be inside a handler element or at the global level inside an application element. A template inside the application element have a unique id.
 
-When included in the handler element, template automatically implement the ‘render’ event to layout the content.
-
-Optionally template’s data can be preprocess, the local environment accessible the template language is ‘scope’. 
-
-[SB : Should talk about with(scope)]
+> When included in the handler element, template automatically implement the ‘render’ event to layout the content.
+> Optionally template’s data can be preprocess, the local environment accessible the template language is ‘scope’. The scope property are directly accessible.
 
 **Tags**
 
@@ -229,5 +235,5 @@ template
 
 **CDATA**
 
-The template’s body, it could be json, html, plain text,…depending your application.
+The template’s body, it could be json, html, plain text, depending your application…
 
