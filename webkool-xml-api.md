@@ -33,11 +33,11 @@ The XML elements within this element.
 
 The characters within this element. Several elements hold ECMAScript code, stylesheet or HTML, which is usually escaped like this: 
 
+```
 <![CDATA[
-
 // ECMAScript code, stylesheet or HTML 
-
-]]> 
+]]>
+```
 
 The individual reference sections are ordered alphabetically for ease of lookup. 
 
