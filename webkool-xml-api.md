@@ -79,11 +79,11 @@ handler, include, on[1], property, script, stylesheet, template.
 
 This is the main element in the webkool xml api. It declare a handler that will respond to a request depending on its behavior. 
 
-> *Handler url act as route.
-> *To request a handler, you can call application.request(url, query) from anywhere or handler.request(url, query) from a handler event. 
-> *the webkool application find the Handler Constructor under that url, instantiate the constructor and the associated behavior. 
-> *handler.request(url, query) return a promise that will be ready when the ‘complete’ event is called.
-> *In the ‘complete’ event the handler can redirect layout to an other handler by calling handler.redirect(url, query).
+> * Handler url act as route.
+> * To request a handler, you can call application.request(url, query) from anywhere or handler.request(url, query) from a handler event. 
+> * the webkool application find the Handler Constructor under that url, instantiate the constructor and the associated behavior. 
+> * handler.request(url, query) return a promise that will be ready when the ‘complete’ event is called.
+> * In the ‘complete’ event the handler can redirect layout to an other handler by calling handler.redirect(url, query).
 
 **Tags**
 
