@@ -8,6 +8,7 @@ This document provides details on the elements that make up the ECMAScript api o
 The figure 1 summarizes the inheritance hierarchy for object described in this document.
 
 **Figure 1.** Webkool ECMAScript API Inheritance Hierarchy.
+
 ![](./hierachy.png)
 
 ## **3. Global properties**
